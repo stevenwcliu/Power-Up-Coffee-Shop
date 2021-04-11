@@ -1,2 +1,2 @@
-# Team Project (Replace with your Team Name and Journal)
+# Team Project (Skyline Cloud)
 
