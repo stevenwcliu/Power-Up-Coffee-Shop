@@ -19,4 +19,4 @@ Spring Dependencies for Cashier's App:
   * Spring Data JPA
 
 I encoutered problem when trying to reteive data from database as I was not familiar with CRUPRespository methods so had to view the documentation for the return object type 
-when using method like findByID() and also for query lookup strategies viewed spring data jpa documentation.
+when using methods and also for query lookup strategies viewed spring data jpa documentation.
