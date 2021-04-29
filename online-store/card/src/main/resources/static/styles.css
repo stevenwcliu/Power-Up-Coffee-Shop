@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins: 200,300,400,500,600,700,800,900&display= swap');
+*
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins',sans-serif;
+}
+section
+{
+	position: relative;
+	width: 100%;
+	min-height: 100vh;
+	padding: 100px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #d4e9e2;;
+
+}
+header
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 20px 100px;
+	display: flex;
+	align-items: center;
+}
+header.logo
+{
+	position: relative;
+	max-width: 80px;
+}
+header ul
+{
+	position: relative;
+	display: flex;
+}
+header ul li
+{
+	list-style: none;
+}
+header ul li a
+{
+	display:inline-block;
+	color: #333;
+	font-weight: 400;
+	font-size:20px;
+	margin-left: 40px;
+	text-decoration: none;
+}
+
+.content{
+	position: relative;
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: left;
+}
+.greeting{
+	position: relative;
+	margin-top: 100px;	 
+}
+.reward{
+	position:relative;
+	margin-right: 500px;
+	margin-top: 30px;
+}
+.line{
+	border-left: 3px solid green;
+	height: 400px;
+	position: absolute;
+	left: 40%;
+	margin-left: -3px;
+	margin-top:50px;
+}
+ 
+
+.detail{
+	position: relative;
+	width: 400px;
+	height: 200px;
+ 	top:90px;
+}
+h2.increase{
+	font-size: 30px;
+}

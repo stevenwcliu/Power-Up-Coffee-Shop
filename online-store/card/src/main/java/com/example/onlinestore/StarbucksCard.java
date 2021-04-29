@@ -1,4 +1,4 @@
-package com.example.starbucksrest;
+package com.example.onlinestore;
 
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -23,19 +23,20 @@ import lombok.RequiredArgsConstructor;
 class StarbucksCard {
 
 	private @Id @GeneratedValue Long id;
-	
-
-    @Column(nullable = false)
+	 
+    private String name;
     private String cardNumber ;
-    @Column(nullable = false)
+     
     private String cardCode;
-    @Column(nullable = false)
+    
     private double balance;
-    @Column(nullable = false)
+   
     private boolean activated;
     private String status;
+    
+    private String rewards;
 
     public boolean isActivated(){
-        return activeted = true;
+        return activated = true;
     }
 }

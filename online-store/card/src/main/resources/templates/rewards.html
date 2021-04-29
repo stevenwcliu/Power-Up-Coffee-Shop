@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Starbucks Rewards</title>
+	<link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+<body>
+	<section>
+		<header>
+			<a href="#" ><img th:src="@{images/logo.jpg}" class = "logo"/></a>
+			<ul>
+				<li><a href="#">ORDER</a></li>
+				<li><a href="#">CARDS</a></li>
+				<li><a href="#">GIFT</a></li>
+			</ul>
+		</header>
+	 	<div class = "content">
+	 		<div class = "greeting">
+	 			<h2 class = "increase">Starbucks Rewards<br></h2>
+	 			<p style="font-size:15px">Hello  <span style ="font-size:15px;font-weight:bold;color:green" th:text="${custName}"/></span>, This is your starbucks reward page. 
+	 			</p> 		
+	 			<img th:src="@{images/detail.jpg}" class = "detail"/>	
+	 		</div>
+	 		<div class = "line"></div>
+	 		<div class = "reward">
+	 			<h2 class = "increase">REWARD STATUS</h2><br><br>
+	 			<p style="font-size:25px"><b>Star Balance: </b></p><br>
+	 			<span style="font-size:25px;font-weight:bold;color:green" th:text="${starBal}"/> 
+	 			<div class="message">
+         	 		<span th:text="${message}" />
+         		 </div>
+	 		</div>
+
+	 	</div>
+
+	</section>
+
+
+
+</body>

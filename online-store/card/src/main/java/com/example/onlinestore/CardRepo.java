@@ -1,10 +1,10 @@
-package com.example.starbucksrest;
+package com.example.onlinestore;
 
 import java.util.*;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.example.starbucksrest.StarbucksCard;
+import com.example.onlinestore.StarbucksCard;
 
 public interface CardRepo extends CrudRepository<StarbucksCard, Integer> {
 
