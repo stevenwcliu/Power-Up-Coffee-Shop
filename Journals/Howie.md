@@ -14,7 +14,7 @@ I have using lab 6 as an example to start with the starbucks online store where 
 The source code is located at: https://github.com/nguyensjsu/sp21-172-skyline-cloud/tree/main/online-store/
 
 ---
-#Week 2
+# Week 2
 
 ## 1 Task Board
 
