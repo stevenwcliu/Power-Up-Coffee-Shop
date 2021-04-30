@@ -17,5 +17,5 @@ I encoutered problem when trying to make the payment working on my end and I was
 
 For week 2, I continued working on the payment API integration by including the cybersource. I am not able to show a demo yet due to some unfixed bugs. 
 
-Source Code in sp21-172-skyline-cloud/spring-payments/ folder, link: https://github.com/nguyensjsu/sp21-172-skyline-cloud/tree/main/springpayments/
+Source Code in sp21-172-skyline-cloud/springpayments/ folder, link: https://github.com/nguyensjsu/sp21-172-skyline-cloud/tree/main/springpayments/
 
