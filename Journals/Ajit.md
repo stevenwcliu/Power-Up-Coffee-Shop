@@ -22,15 +22,15 @@ I encoutered problem when trying to reteive data from database as I was not fami
 when using methods and also for query lookup strategies viewed spring data jpa documentation.
 
 ---
-# Week 2
+### Week 2
 
-## 1 Task Board
+#### Task Board
 
-![Project Progress Dashboard](images/ajit/project_progress_dashboard.PNG)
+![Project Progress Dashboard](images/ajit/week2/project_progress_dashboard.PNG)
 
 I'm currently working on the cashier's application.
 
-## 2 Accomplishment
+#### Accomplishment
 
 For week 2, I finished the implementation of the starbucks order page of the cashier's app. I have also used Spring Security dependency for User Autehntication. I will keep be now working on other pages and also consuming the REST API requests for ordering drinks.
 
