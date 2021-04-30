@@ -20,3 +20,18 @@ Spring Dependencies for Cashier's App:
 
 I encoutered problem when trying to reteive data from database as I was not familiar with CRUPRespository methods so had to view the documentation for the return object type 
 when using methods and also for query lookup strategies viewed spring data jpa documentation.
+
+---
+# Week 2
+
+## 1 Task Board
+
+![Project Progress Dashboard](images/ajit/project_progress_dashboard.PNG)
+
+I'm currently working on the cashier's application.
+
+## 2 Accomplishment
+
+For week 2, I finished the implementation of the starbucks order page of the cashier's app. I have also used Spring Security dependency for User Autehntication. I will keep be now working on other pages and also consuming the REST API requests for ordering drinks.
+
+The source code is located at: https://github.com/nguyensjsu/sp21-172-skyline-cloud/tree/main/spring-cashier
