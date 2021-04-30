@@ -213,6 +213,15 @@
           <br/>
           <br/>
           <br/>
+
+          <div th: if="${not#lists.isEmpty(messages)}">
+          <div class="messages">
+            <ul th:each="m : ${messages}">
+              <li th:text="${m.msg}" />
+            </ul>
+          </div>
+          </div>
+          
           <div class="message">
           <span th:text="${message}" />
           </div>
