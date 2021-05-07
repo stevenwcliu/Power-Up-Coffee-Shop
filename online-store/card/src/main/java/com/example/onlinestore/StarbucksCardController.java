@@ -33,38 +33,51 @@ public class StarbucksCardController{
 
 	@Autowired
 	private CardRepo repo;
+   
 
-	@GetMapping
-    public String getAction( @ModelAttribute("command") StarbucksCard command, 
-      Model model) {
+  @GetMapping("/rewards")
+  public String rewards( @ModelAttribute("command") StarbucksCard command, 
+    Model model) {
 
-      String reward = "145";
-      String name = "Kay";
-      command.setRewards(reward);
-      command.setName(name);
+    String reward = "145";
+    String name = "Kay";
+    command.setRewards(reward);
+    command.setName(name);
       // repo.save(command);
 
-      model.addAttribute("message","Reward shown.");
-      model.addAttribute("custName",command.getName());
-      model.addAttribute("starBal",command.getRewards());
+    model.addAttribute("message","Reward shown.");
+    model.addAttribute("custName",command.getName());
+    model.addAttribute("starBal",command.getRewards());
 
-      return "rewards" ;
+    return "rewards" ;
 
+  }
+
+    //rendering the card page
+    @RequestMapping("/cards")
+    public String cards(@ModelAttribute("command") StarbucksCard command, 
+      Model model){
+
+      Double bal = 26.18;
+      command.setBalance(bal);
+      // repo.save(command);
+
+      model.addAttribute("cardBal",command.getBalance());
+      return "cards";
     }
 
-    @PostMapping
-    public String postAction(@Valid @ModelAttribute("command") StarbucksCard command,
-      @RequestParam(value="action", required=true) String action,
-      Errors errors, Model model, HttpServletRequest request) {
+     //rendering the add payment page
+    @RequestMapping("/add")
+    public String addCards(@ModelAttribute("command") StarbucksCard command, 
+      Model model){
 
-      log.info( "Action: " + action ) ;
-      log.info( "Command: " + command ) ;
+      // Double bal = 26.18;
+      // command.setBalance(bal);
+      // // repo.save(command);
 
-
-
-      return "rewards";
-
-	}
+      // model.addAttribute("cardBal",command.getBalance());
+      return "add";
+    }
 
 
 }

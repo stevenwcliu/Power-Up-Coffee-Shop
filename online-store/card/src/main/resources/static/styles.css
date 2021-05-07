@@ -52,6 +52,10 @@ header ul li a
 	text-decoration: none;
 }
 
+p{
+	font-weight: 600;
+	font-family: SoDoSans;
+}
 .content{
 	position: relative;
 	display: flex;
@@ -59,24 +63,33 @@ header ul li a
 	justify-content: space-between;
 	align-items: left;
 }
+
+.payment{
+	position: relative;
+	display: flex;
+	width: 80%;
+	justify-content: space-between;
+	align-items: left;
+}
 .greeting{
 	position: relative;
-	margin-top: 100px;	 
+	margin-top: 50px;	 
 }
 .reward{
 	position:relative;
 	margin-right: 500px;
 	margin-top: 30px;
+	right:20%;
 }
 .line{
+	position: relative;
 	border-left: 3px solid green;
 	height: 400px;
 	position: absolute;
-	left: 40%;
+	left: 30%;
 	margin-left: -3px;
 	margin-top:50px;
 }
- 
 
 .detail{
 	position: relative;
@@ -84,6 +97,28 @@ header ul li a
 	height: 200px;
  	top:90px;
 }
-h2.increase{
-	font-size: 30px;
+
+
+
+.text-sm{
+	position: relative;
+
+}
+
+.card-img{
+	display:block;
+	padding-top: 50px;
+	width: 600px;
+	height: 400px;
+	position: relative;
+}
+
+.card{
+	position: relative;
+	right: 20%;
+}
+
+.increase{
+	font-size: 28px;
+	font-weight: 700;
 }

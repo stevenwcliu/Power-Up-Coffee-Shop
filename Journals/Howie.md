@@ -28,3 +28,17 @@ For week 2, I finished the implementation of the reward page of the online store
 
 The source code is located at: https://github.com/nguyensjsu/sp21-172-skyline-cloud/tree/main/online-store/
 
+---
+# Week 3
+
+## 1 Task Board
+
+![board](images/howie/board.png)
+
+I'm currently working on the online store application.
+
+## 2 Accomplishment
+
+For week 3, the implementation of all views of the online store is finished. What's left is to modify the controller to have the new card be added into database, would not be hard to implement. For next week, we will discuss how to connect the online store and the order application, and how to have the db set up for data query. 
+
+The source code is located at: https://github.com/nguyensjsu/sp21-172-skyline-cloud/tree/main/online-store/

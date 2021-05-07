@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Add Card</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" type="text/css"/>
+	<link rel="stylesheet" th:href="@{/styles.css}"/>
+	<link rel="stylesheet" th:href = "@{/newcard.css}"/>
+</head>
+<body>
+	<section>
+		<header>
+			<a th:href="@{rewards}" ><img th:src="@{images/logo.jpg}" class = "logo"/></a>
+			<ul>
+				<li><a href="#">ORDER</a></li>
+				<li><a th:href="@{cards}">CARDS</a></li>
+				<li><a th:href="@{rewards}">REWARDS</a></li>
+			</ul>
+		</header>
+		<h2 class = "title">Starbucks Card</h2>
+	 	<div class = "payment">
+	 		<div class = "wrapper">
+
+	 			<h4>ADD A STARBUCKS CARD</h4>
+	 			<p class="box">Add a Starbucks Card to order ahead, pay in store, and earn Rewards.</p><br>
+	 			<form method="POST">
+	 				<p>Card Name</p>
+	 				<div class = "input-group">
+	 					<div class = "input-box">
+	 						<input type="text" placeholder="Nickname" required class="name">
+	 					</div>
+	 				</div>
+	 				
+	 				<div class ="input-group">
+	 					<div class="input-box">
+	 						<p>Card Type </p>
+	 						<input type="radio" name ="pay" id="bc1" checked class="radio">
+	 						<label for="bc1"><span style="font-weight:200">Credit Card</span></label>
+	 						<input type="radio" name ="pay" id="bc2" checked class="radio">
+	 						<label for="bc2"><span style="font-weight:200">Debit Card </span></label>
+	 						<i class="fa fa-cc-mastercard">&nbsp</i><i class="fa fa-cc-visa"></i>		
+	 					</div>
+	 				</div>
+
+	 				<div class = "input-group">
+	 					<div class = "input-box">
+	 						<p>Name on Card </p>
+	 						<input type="text" placeholder="Name On card" required class="name">
+	 						<i class="fa fa-user icon"></i>
+	 					</div>
+	 				</div>
+
+	 				<div class = "input-group">
+	 					<div class = "input-box">
+	 						<p>Expiration Date</p> 
+	 						<input type="text" placeholder="MM" required class="dob">
+	 					 
+	 					 	<input type="text" placeholder="YY" required class ="dob">
+	 			 
+	 					</div>
+	 				</div>
+
+	 				<div class = "input-group">
+	 					<div class = "input-box">
+	 						<p>Card Number</p> 
+	 						<input type="text" placeholder="Card Number" required class="name">
+	 						<i class="fa fa-credit-card icon"></i>
+	 					</div>
+	 				</div>
+
+
+	 				<div class = "input-group">
+	 					<div class = "input-box">
+	 						<p>Card CVV</p>
+	 						<input type="text" placeholder="CVV Number" required class="name">
+	 						<i class="fa fa-credit-card icon"></i>
+	 					</div>
+	 				</div>
+
+	 				<div class = "input-group">
+	 					<div class = "input-box">
+	 						<button type = "submit"> ADD CARD </button>
+	 						 
+	 					</div>
+	 				</div>
+
+
+
+	 			</form>
+	 		</div>
+
+
+
+
+	 	</div>
+
+	</section>
+
+
+
+</body>

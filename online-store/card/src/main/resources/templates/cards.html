@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Starbucks Cards</title>
+	<link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+<body>
+	<section>
+		<header>
+			<a th:href="@{rewards}" ><img th:src="@{images/logo.jpg}" class = "logo"/></a>
+			<ul>
+				<li><a href="#">ORDER</a></li>
+				<li><a th:href="@{cards}">CARDS</a></li>
+				<li><a th:href="@{rewards}">REWARDS</a></li>
+			</ul>
+		</header>
+	 	<div class = "content">
+	 		<div class = "greeting">
+	 			<h2 class = "increase">Starbucks Cards<br></h2>
+	 			</p>
+	 			<ul style="list-style: none">
+	 				<li><a class = "text-sm" style="color:green;font-size:20px;text-decoration:none" th:href="@{add}">Add</a></li>
+	 			</ul>
+	 		</div>
+	 		<div class = "line"></div>
+	 		<div class = "card">
+	 			<p style="font-size:25px"><b>Balance: $<span style="font-size:25px;font-weight:bold;color:green" th:text="${cardBal}"/></b></p>
+	 			<img  th:src="@{images/card.png}" class = "card-img"/>
+	 		</div>
+
+	 	</div>
+
+	</section>
+
+
+
+</body>
