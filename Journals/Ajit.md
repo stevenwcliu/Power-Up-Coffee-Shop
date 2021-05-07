@@ -35,3 +35,17 @@ I'm currently working on the cashier's application.
 For week 2, I finished the implementation of the starbucks order page of the cashier's app. I have also used Spring Security dependency for User Autehntication. I will keep be now working on other pages and also consuming the REST API requests for ordering drinks.
 
 The source code is located at: https://github.com/nguyensjsu/sp21-172-skyline-cloud/tree/main/spring-cashier
+
+### Week 3
+
+#### Task Board
+
+![Project Progress Dashboard](images/ajit/week3/porject_dashboard.PNG)
+
+I'm currently working on the cashier's application.
+
+#### Accomplishment
+
+For week 3, I finished the implementation of the starbucks order page of the cashier's app and working on the get orders page. I am also modifying the designController for the orders and consuming the Starbucks REST APIs using the API Keys for API Authentication.
+
+The source code is located at: https://github.com/nguyensjsu/sp21-172-skyline-cloud/tree/main/spring-cashier
