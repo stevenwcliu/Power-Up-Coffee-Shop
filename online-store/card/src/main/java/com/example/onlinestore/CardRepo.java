@@ -8,8 +8,10 @@ import com.example.onlinestore.StarbucksCard;
 
 public interface CardRepo extends CrudRepository<StarbucksCard, Integer> {
 
-	@Query(value = "SELECT card from StarbucksCard card")
+	@Query(value = "SELECT card FROM StarbucksCard card")
 	List<StarbucksCard> findAllCard();
 
-	StarbucksCard findByCardNumber(String cardNumber);
+	@Query(value = "SELECT s.rewards FROM StarbucksCard s WHERE s.nickName= ?1 ")
+	StarbucksCard findRewards(String nickName);
+
 }

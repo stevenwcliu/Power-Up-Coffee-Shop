@@ -11,11 +11,11 @@ xmlns:th="http://www.thymeleaf.org">
 <body>
 	<section>
 		<header>
-			<a th:href="@{rewards}" ><img th:src="@{images/logo.jpg}" class = "logo"/></a>
+			<a th:href="@{rewards}" ><img th:src="@{/images/logo.jpg}" class = "logo"/></a>
 			<ul>
 				<li><a href="#">ORDER</a></li>
-				<li><a th:href="@{cards}">CARDS</a></li>
-				<li><a th:href="@{rewards}">REWARDS</a></li>
+				<li><a href="@{cards}">CARDS</a></li>
+				<li><a href="@{rewards}">REWARDS</a></li>
 			</ul>
 		</header>
 		<h2 class = "title">Starbucks Card</h2>
@@ -24,20 +24,20 @@ xmlns:th="http://www.thymeleaf.org">
 
 	 			<h4>ADD A STARBUCKS CARD</h4>
 	 			<p class="box">Add a Starbucks Card to order ahead, pay in store, and earn Rewards.</p><br>
-	 			<form method="POST">
-	 				<p>Card Name</p>
+	 			<form method="POST" th:object="form">
+	 				<p>Card NickName</p>
 	 				<div class = "input-group">
 	 					<div class = "input-box">
-	 						<input type="text" placeholder="Nickname" required class="name">
+	 						<input type="text" placeholder="Nickname" required class="name" th:field="*{nickName}">
 	 					</div>
 	 				</div>
 	 				
 	 				<div class ="input-group">
 	 					<div class="input-box">
 	 						<p>Card Type </p>
-	 						<input type="radio" name ="pay" id="bc1" checked class="radio">
+	 						<input type="radio" name ="pay" id="bc1" checked class="radio" th:field="*{cardType}">
 	 						<label for="bc1"><span style="font-weight:200">Credit Card</span></label>
-	 						<input type="radio" name ="pay" id="bc2" checked class="radio">
+	 						<input type="radio" name ="pay" id="bc2" checked class="radio" th:field="*{cardType}">
 	 						<label for="bc2"><span style="font-weight:200">Debit Card </span></label>
 	 						<i class="fa fa-cc-mastercard">&nbsp</i><i class="fa fa-cc-visa"></i>		
 	 					</div>
@@ -45,18 +45,24 @@ xmlns:th="http://www.thymeleaf.org">
 
 	 				<div class = "input-group">
 	 					<div class = "input-box">
-	 						<p>Name on Card </p>
-	 						<input type="text" placeholder="Name On card" required class="name">
+	 						<p>First Name</p>
+	 						<input type="text" placeholder="First Name" required class="name" th:field="*{firstname}">
+	 						<i class="fa fa-user icon"></i>
+	 					</div>
+	 					<div class="input-box">
+	 						<p>Last Name</p>
+	 						<input type="text" placeholder="Last Name" required class="name" th:field="*{lastname}">
 	 						<i class="fa fa-user icon"></i>
 	 					</div>
 	 				</div>
 
+
 	 				<div class = "input-group">
 	 					<div class = "input-box">
 	 						<p>Expiration Date</p> 
-	 						<input type="text" placeholder="MM" required class="dob">
+	 						<input type="text" placeholder="MM" required class="dob" th:field="*{expMon}">
 	 					 
-	 					 	<input type="text" placeholder="YY" required class ="dob">
+	 					 	<input type="text" placeholder="YY" required class ="dob" th:field="*{expYear}">
 	 			 
 	 					</div>
 	 				</div>
@@ -64,7 +70,7 @@ xmlns:th="http://www.thymeleaf.org">
 	 				<div class = "input-group">
 	 					<div class = "input-box">
 	 						<p>Card Number</p> 
-	 						<input type="text" placeholder="Card Number" required class="name">
+	 						<input type="text" placeholder="Card Number" required class="name" th:field="*{cardNum}">
 	 						<i class="fa fa-credit-card icon"></i>
 	 					</div>
 	 				</div>
@@ -73,7 +79,7 @@ xmlns:th="http://www.thymeleaf.org">
 	 				<div class = "input-group">
 	 					<div class = "input-box">
 	 						<p>Card CVV</p>
-	 						<input type="text" placeholder="CVV Number" required class="name">
+	 						<input type="text" placeholder="CVV Number" required class="name" th:field="*{cvv}"> 
 	 						<i class="fa fa-credit-card icon"></i>
 	 					</div>
 	 				</div>
