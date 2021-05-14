@@ -18,19 +18,19 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 @Entity
-@Table(name = "New Card")
+@Table(name = "new_card")
 @Data
 @RequiredArgsConstructor
 class StarbucksCard {
 
 	private @Id @GeneratedValue Long id;
 	
-    @NotNull
+ 
     private String nickName;
 
     @NotNull
     private String cardType;
-
+ 
     @NotNull
     private String firstname;
 
@@ -49,9 +49,9 @@ class StarbucksCard {
     @NotNull
     private String cvv;
     
-    @NotNull
-    private double balance;
+    
+    private double balance; 
    
-    @NotNull
+    
     private Integer rewards;
 }

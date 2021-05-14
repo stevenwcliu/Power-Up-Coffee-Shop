@@ -12,6 +12,6 @@ public interface CardRepo extends CrudRepository<StarbucksCard, Integer> {
 	List<StarbucksCard> findAllCard();
 
 	@Query(value = "SELECT s.rewards FROM StarbucksCard s WHERE s.nickName= ?1 ")
-	StarbucksCard findRewards(String nickName);
+	StarbucksCard findByNickName(String nickName);
 
 }

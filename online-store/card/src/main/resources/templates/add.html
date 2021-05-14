@@ -14,8 +14,8 @@ xmlns:th="http://www.thymeleaf.org">
 			<a th:href="@{rewards}" ><img th:src="@{/images/logo.jpg}" class = "logo"/></a>
 			<ul>
 				<li><a href="#">ORDER</a></li>
-				<li><a href="@{cards}">CARDS</a></li>
-				<li><a href="@{rewards}">REWARDS</a></li>
+				<li><a th:href="@{cards}">CARDS</a></li>
+				<li><a th:href="@{rewards}">REWARDS</a></li>
 			</ul>
 		</header>
 		<h2 class = "title">Starbucks Card</h2>
@@ -24,7 +24,7 @@ xmlns:th="http://www.thymeleaf.org">
 
 	 			<h4>ADD A STARBUCKS CARD</h4>
 	 			<p class="box">Add a Starbucks Card to order ahead, pay in store, and earn Rewards.</p><br>
-	 			<form method="POST" th:object="form">
+	 			<form method="POST" th:object="${command}" th:action = "@{/adds}">
 	 				<p>Card NickName</p>
 	 				<div class = "input-group">
 	 					<div class = "input-box">
@@ -35,9 +35,9 @@ xmlns:th="http://www.thymeleaf.org">
 	 				<div class ="input-group">
 	 					<div class="input-box">
 	 						<p>Card Type </p>
-	 						<input type="radio" name ="pay" id="bc1" checked class="radio" th:field="*{cardType}">
+	 						<input type="radio" name ="pay" id="bc1" checked class="radio" value = "1" th:field="*{cardType}">
 	 						<label for="bc1"><span style="font-weight:200">Credit Card</span></label>
-	 						<input type="radio" name ="pay" id="bc2" checked class="radio" th:field="*{cardType}">
+	 						<input type="radio" name ="pay" id="bc2" checked class="radio" value = "2" th:field="*{cardType}">
 	 						<label for="bc2"><span style="font-weight:200">Debit Card </span></label>
 	 						<i class="fa fa-cc-mastercard">&nbsp</i><i class="fa fa-cc-visa"></i>		
 	 					</div>
@@ -86,7 +86,7 @@ xmlns:th="http://www.thymeleaf.org">
 
 	 				<div class = "input-group">
 	 					<div class = "input-box">
-	 						<button type = "submit"> ADD CARD </button>
+	 						<button type = "submit" onclick="document.getElementById('myInput').value = ''"> ADD CARD </button>
 	 						 
 	 					</div>
 	 				</div>

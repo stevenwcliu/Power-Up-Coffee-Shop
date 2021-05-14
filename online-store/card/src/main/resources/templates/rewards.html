@@ -24,13 +24,25 @@ xmlns:th="http://www.thymeleaf.org">
 	 			<img th:src="@{images/detail.jpg}" class = "detail"/>	
 	 		</div>
 	 		<div class = "line"></div>
-	 		<div class = "reward">
+	 		<div class = "card">
 	 			<h2 class = "increase">REWARD STATUS</h2><br><br>
-	 			<p style="font-size:20px"><b>Star Balance: </b></p><br>
-	 			<span style="font-size:25px;font-weight:bold;color:green" th:text="${starBal}"/> 
-	 			<div class="message">
-         	 		<span th:text="${message}" />
-         		 </div>
+	 			<table class="table">
+	 				<thead>
+	 					<tr>
+	 						<th>NickName</th>
+	 						<th>Rewards</th>
+	 					</tr>
+	 				</thead>
+	 				<tbody>
+	 					<tr th:each="card:${cardlist}">
+	 						<td th:text = "${card.nickName}"></td>
+	 						<td th:text = "${card.rewards}"></td>
+	 					</tr>
+
+	 				</tbody>
+	 				
+
+	 			</table>
 	 		</div>
 
 	 	</div>

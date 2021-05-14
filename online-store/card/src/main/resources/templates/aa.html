@@ -4,12 +4,12 @@ xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>Starbucks Cards</title>
-	<link rel="stylesheet" th:href="@{/styles.css}"/>
+	<link rel="stylesheet" href="../static/styles.css"/>
 </head>
 <body>
 	<section>
 		<header>
-			<a th:href="@{rewards}" ><img th:src="@{/images/logo.jpg}" class = "logo"/></a>
+			<a th:href="@{rewards}" ><img src="../static/images/logo.jpg" class = "logo"/></a>
 			<ul>
 				<li><a href="#">ORDER</a></li>
 				<li><a th:href="@{cards}">CARDS</a></li>
@@ -36,8 +36,8 @@ xmlns:th="http://www.thymeleaf.org">
 	 				</thead>
 	 				<tbody>
 	 					<tr th:each="card:${cardlist}">
-	 						<td th:text = "${card.nickName}"></td>
-	 						<td th:text = "${card.balance}"></td>
+	 						<td th:text = "${card.nickName}">Domice</td>
+	 						<td th:text = "${card.balance}">20.35</td>
 	 					</tr>
 
 	 				</tbody>

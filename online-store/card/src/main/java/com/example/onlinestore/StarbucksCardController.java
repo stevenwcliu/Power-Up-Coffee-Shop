@@ -28,34 +28,19 @@ import lombok.Data;
 
 @Slf4j
 @Controller
-@RequestMapping("/")
 public class StarbucksCardController{
 
 	@Autowired
-	private CardRepo repo;
+	private CardService cardservice;
 
 
   @GetMapping("/rewards")
   public String rewards( @ModelAttribute("command") StarbucksCard command, 
     Model model) {
 
-    // String reward = "145";
-    // String name = "Kay";
-    // command.setRewards(reward);
-    // command.setName(name);
-    // repo.save(command);
+    List<StarbucksCard> cards = cardservice.listAll();
+    model.addAttribute("cardlist",cards);
 
-    // @GetMapping
-    StarbucksCard card(@PathVariable String nickName){
-        Integer rewards = repo.findRewards(nickName);
-        model.addAttribute("starBal",rewards);
-        return "rewards";
-    }
-
-
-    // model.addAttribute("message","Reward shown.");
-    // model.addAttribute("custName",command.getName());
- 
     return "rewards" ;
 
   }
@@ -65,39 +50,44 @@ public class StarbucksCardController{
   public String cards(@ModelAttribute("command") StarbucksCard command, 
     Model model){
 
+    // StarbucksCard card = new StarbucksCard();
+    // String name = card.getNickName();
 
-
-    model.addAttribute("cardBal",command.getBalance());
+    List<StarbucksCard> cards = cardservice.listAll();
+    model.addAttribute("cardlist",cards);
+    
     return "cards";
   }
 
      //rendering the add payment page
-  @RequestMapping("/add")
+  @PostMapping("/adds")
   public String addCards(@ModelAttribute("command") StarbucksCard command, 
     Model model){
 
-
-    //ADD a new card
-    @PostMapping
-    StarbucksCard newCard(){
-
       StarbucksCard card = new StarbucksCard();
 
-      card.setNickName(command.nickName());
-      card.setCardType(command.cardType());
-      card.setFristname(command.firstname());
-      card.setLastname(command.lastname());
-      card.setExpYear(command.expYear());
-      card.setExpMon(command.expMon());
-      card.setCardNum(command.cardNum());
-      card.setCvv(command.cvv());
+      card.setNickName(command.getNickName());
+      card.setCardType(command.getCardType());
+      card.setFirstname(command.getFirstname());
+      card.setLastname(command.getLastname());
+      card.setExpYear(command.getExpYear());
+      card.setExpMon(command.getExpMon());
+      card.setCardNum(command.getCardNum());
+      card.setCvv(command.getCvv());
       card.setBalance(100.00);
       card.setRewards(0);
-      return repo.save(card);
-    }
+      cardservice.save(card);
+ 
+
+    return "cards";
+  }
+
+  @GetMapping("/add")
+  public String addPage(@ModelAttribute("command") StarbucksCard command, 
+    Model model){
 
     return "add";
-  }
+  } 
 
 
 }
