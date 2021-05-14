@@ -49,3 +49,18 @@ I'm currently working on the cashier's application.
 For week 3, I finished the implementation of the starbucks order page of the cashier's app and working on the get orders page. I am also modifying the designController for the orders and consuming the Starbucks REST APIs using the API Keys for API Authentication.
 
 The source code is located at: https://github.com/nguyensjsu/sp21-172-skyline-cloud/tree/main/spring-cashier
+
+### Week 4
+
+#### Task Board
+
+![Project Progress Dashboard](images/ajit/week4/project_dashboard.PNG)
+
+I'm currently working on the cashier's application.
+
+#### Accomplishment
+
+For week 4, I finished the implementation of the starbucks order page of the cashier's app and working on the get orders controller. I am also modifying the designController for the orders and consuming the Starbucks REST API using the API Keys for API Authentication for new order and get orders. Setup the Kong API getway connecting to REST API on GKE. Working on connecting the Cloud SQL to REST API and saving data in MySQL database rather than H2 in-memory database.
+
+The source code is located at: https://github.com/nguyensjsu/sp21-172-skyline-cloud/tree/main/spring-cashier
+
