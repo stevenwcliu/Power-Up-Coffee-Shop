@@ -17,13 +17,12 @@ import javax.persistence.Table;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-@Entity
-@Table(name = "new_card")
+
 @Data
 @RequiredArgsConstructor
 class PaymentInfo {
 
-	private @Id @GeneratedValue Long id;
+	private Long id;
 	
  
     private String nickName;

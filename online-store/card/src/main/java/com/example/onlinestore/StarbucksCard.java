@@ -12,23 +12,21 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-@Entity
-@Table(indexes=@Index(name = "altIndex", columnList = "cardNumber", unique = true))
+
+
 @Data
 @RequiredArgsConstructor
 class StarbucksCard {
 
     private @Id @GeneratedValue Long id;
 
-    @Column(nullable=false) private String cardNumber;
-    @Column(nullable=false) private String cardCode;
-    @Column(nullable=false) private double balance;
-    @Column(nullable=false) private Integer rewards;
-    @Column(nullable=false) private boolean activated;
-                            private String status;
+    private String cardNumber;
+    private String cardCode;
+    private double balance;
+    private Integer rewards;
+    private boolean activated;
+    private String status;
 
-    // public boolean isActivated(){
-    //     return activated = true;
-    // }
+ 
 
 }

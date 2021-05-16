@@ -46,13 +46,9 @@ import com.example.springcybersource.*;
 
 @Slf4j
 @Controller
+// @RequestMapping("/")
 public class StarbucksCardController{
 
-	@Autowired
-	private CardService cardservice;
-
-  @Autowired
-  private PaymentService payservice;
 
 
   @Value("${cybersource.apihost}") String apiHost ;
@@ -69,13 +65,15 @@ public class StarbucksCardController{
     // KONG URL
   final String KONG = "http://146.148.103.73/api";
 
+  private StarbucksCard card;
+
 
   @GetMapping("/rewards")
   public String rewards( @ModelAttribute("command") StarbucksCard command, 
     Model model) {
 
-    List<StarbucksCard> cards = cardservice.listAll();
-    model.addAttribute("cardlist",cards);
+     
+    model.addAttribute("cardlist",card);
 
     try {
       HttpClient client = HttpClient.newHttpClient();
@@ -102,16 +100,15 @@ public class StarbucksCardController{
   }
 
     //rendering the card page
-  @RequestMapping("/cards")
+  @GetMapping("/cards")
   public String cards(Model model){
-
-    List<StarbucksCard> cards = cardservice.listAll();
-    model.addAttribute("cardlist",cards);
+ 
+    model.addAttribute("cardlist",card);
     
     try {
       HttpClient client = HttpClient.newHttpClient();
       HttpRequest request = HttpRequest.newBuilder()
-      .uri(URI.create(KONG+"/cards"))
+      .uri(URI.create(KONG+"/cards"+card.getCardNumber()))
       .header(API_KEY, API_KEY_VALUE)
       .header("Content-Type", "application/json")
       .build();
@@ -126,8 +123,6 @@ public class StarbucksCardController{
     } catch (Exception e) {
       System.out.println(e);
     }
-
-
 
 
     return "cards";
@@ -147,6 +142,7 @@ public class StarbucksCardController{
     CyberSourceAPI.debugConfig();
 
 
+
     int min = 1239871;
     int max = 9999999;
     int random_1 = (int)Math.floor(Math.random()*(max-min+1)+min);
@@ -155,7 +151,7 @@ public class StarbucksCardController{
     auth.reference = order_num;
     auth.billToFirstName = command.getFirstname();
     auth.billToLastName = command.getLastname() ;
-    auth.transactionAmount = "25.00" ;
+    auth.transactionAmount = "20.00" ;
     auth.transactionCurrency = "USD" ;
     auth.cardNumnber = command.getCardNum();
     auth.cardExpMonth = command.getExpMon();
@@ -170,7 +166,7 @@ public class StarbucksCardController{
     auth.billToEmail = command.getEmail() ;
     if(auth.cardType.equals("ERROR")){
       System.out.println("Unsupported card type.");
-      return "add";
+      return "cards";
     }
 
     boolean authValid = true ;
@@ -181,7 +177,7 @@ public class StarbucksCardController{
     if ( !authResponse.status.equals("AUTHORIZED") ) {
       authValid = false;
       System.out.println(authResponse.message);
-      return "add";
+      return "cards";
     }
 
     boolean captureValid = true ;
@@ -189,7 +185,7 @@ public class StarbucksCardController{
     CaptureResponse captureResponse = new CaptureResponse() ;
     if ( authValid ) {
       capture.paymentId = authResponse.id ;
-      capture.transactionAmount = "25.00" ;
+      capture.transactionAmount = "20.00" ;
       capture.transactionCurrency = "USD" ;
       System.out.println("\n\nCapture Request: " + capture.toJson() ) ;
       captureResponse = api.capture(capture) ;
@@ -205,39 +201,15 @@ public class StarbucksCardController{
 
     if(authValid && captureValid){
 
-      StarbucksCard newCard = new StarbucksCard();
-
-      Random random = new Random();
-      int num = random.nextInt(900000000) + 100000000;
-      int code = random.nextInt(900) + 100;
-
-      newCard.setCardNumber(String.valueOf(num));
-      newCard.setCardCode(String.valueOf(code));
-      newCard.setBalance(25.00);
-      newCard.setActivated(false);
-      newCard.setStatus("New Card");
-      newCard.setRewards(0);
-      cardservice.save(newCard);
-
-      String balance = String.valueOf(newCard.getBalance());
-      String activated = String.valueOf(newCard.isActivated());
-      var values = new HashMap<String, String>() {{
-        put("CardNumber", newCard.getCardNumber());
-        put ("CardCode", newCard.getCardCode());
-        put ("Balance", balance);
-        put ("Activated", activated);
-        put ("Status", newCard.getStatus());
-      }};
-
+      var values = new HashMap<String,String>(){{}};
       var objectMapper = new ObjectMapper();
 
       try {
-        String requestBody = objectMapper
-        .writeValueAsString(values);
+        String requestBody = objectMapper.writeValueAsString(values);
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-        .uri(URI.create(KONG+"/adds"))
+        .uri(URI.create(KONG+"/cards"))
         .POST(HttpRequest.BodyPublishers.ofString(requestBody))
         .header(API_KEY, API_KEY_VALUE)
         .header("Content-Type", "application/json")
@@ -246,7 +218,10 @@ public class StarbucksCardController{
 
         try {
           HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+          ObjectMapper cardMapper = new ObjectMapper();
+          card = cardMapper.readValue(response.body(),StarbucksCard.class);
           System.out.println(response.body());
+          System.out.println(card);
         } catch (Exception e) {
           System.out.println(e);
         }
