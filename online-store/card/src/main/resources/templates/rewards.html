@@ -29,13 +29,13 @@ xmlns:th="http://www.thymeleaf.org">
 	 			<table class="table">
 	 				<thead>
 	 					<tr>
-	 						<th>NickName</th>
+	 						<th>CardNumber</th>
 	 						<th>Rewards</th>
 	 					</tr>
 	 				</thead>
 	 				<tbody>
 	 					<tr th:each="card:${cardlist}">
-	 						<td th:text = "${card.nickName}"></td>
+	 						<td th:text = "${card.cardNumber}"></td>
 	 						<td th:text = "${card.rewards}"></td>
 	 					</tr>
 

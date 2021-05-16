@@ -5,13 +5,13 @@ xmlns:th="http://www.thymeleaf.org">
 	<meta charset="UTF-8">
 	<title>Add Card</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" type="text/css"/>
-	<link rel="stylesheet" th:href="@{/styles.css}"/>
-	<link rel="stylesheet" th:href = "@{/newcard.css}"/>
+	<link rel="stylesheet" href="../static/styles.css"/>
+	<link rel="stylesheet" href = "../static/newcard.css"/>
 </head>
 <body>
 	<section>
 		<header>
-			<a th:href="@{rewards}" ><img th:src="@{/images/logo.jpg}" class = "logo"/></a>
+			<a th:href="@{rewards}" ><img src="../static/images/logo.jpg" class = "logo"/></a>
 			<ul>
 				<li><a href="#">ORDER</a></li>
 				<li><a th:href="@{cards}">CARDS</a></li>

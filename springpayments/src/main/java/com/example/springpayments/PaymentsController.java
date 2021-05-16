@@ -43,10 +43,10 @@ public class PaymentsController {
 
     private static boolean DEBUG = true ;
 
-    @Value("${cybersource.apihost}") private String apiHost ;
-    @Value("${cybersource.merchantkeyid}") private String merchantKeyId ;
-    @Value("${cybersource.merchantsecretkey}") private String merchantsecretKey ;
-    @Value("${cybersource.merchantid}") private String merchantId ;
+    @Value("${cybersource.apihost}")  String apiHost ;
+    @Value("${cybersource.merchantkeyid}")  String merchantKeyId ;
+    @Value("${cybersource.merchantsecretkey}")  String merchantsecretKey ;
+    @Value("${cybersource.merchantid}")  String merchantId ;
 
     private CyberSourceAPI api = new CyberSourceAPI() ;
 
@@ -160,7 +160,7 @@ public class PaymentsController {
         /* Render View */
         CyberSourceAPI.setHost( apiHost) ;
         CyberSourceAPI.setKey( merchantKeyId ) ;
-        CyberSourceAPI.setSecret(merchantsecretkey) ; 
+        CyberSourceAPI.setSecret(merchantsecretKey) ; 
         CyberSourceAPI.setMerchant( merchantId) ;
         CyberSourceAPI.debugConfig() ; 
 

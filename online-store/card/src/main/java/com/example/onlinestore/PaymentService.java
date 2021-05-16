@@ -7,16 +7,16 @@ import org.springframework.stereotype.Service;
 // import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class CardService {
+public class PaymentService {
 
-    @Autowired CardRepo cardRepo;
+    @Autowired PaymentRepo paymentRepo;
      
-    public void save(StarbucksCard card) {
-        cardRepo.save(card);
+    public void save(PaymentInfo card) {
+        paymentRepo.save(card);
     }
      
-    public List<StarbucksCard> listAll() {
-        return (List<StarbucksCard>) cardRepo.findAll();
+    public List<PaymentInfo> listAll() {
+        return (List<PaymentInfo>) paymentRepo.findAll();
     }
      
      
