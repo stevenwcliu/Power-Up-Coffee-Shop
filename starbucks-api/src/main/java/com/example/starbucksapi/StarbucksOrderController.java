@@ -220,8 +220,10 @@ public class StarbucksOrderController {
         if(balance - price < 0) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Insufficient Funds on Card!");
         }
+        int newRewards = card.getReward() + 10;
         double new_balance = balance - price;
         card.setBalance(new_balance);
+        card.setReward(newRewards);
         String status = "Paid with Card: "+cardnum+" Balance: $"+new_balance;
         active.setStatus(status);
         cardsRepository.save(card);

@@ -53,6 +53,7 @@ class StarbucksCardController {
         newCard.setBalance(20.00);
         newCard.setActivated(false);
         newCard.setStatus("New Card");
+        newCard.setReward(0);
         return repository.save(newCard);
 
     }
