@@ -7,7 +7,7 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class Taco {
+public class DrinkOrder {
     
     @NotNull
     @Size(min=1, message="Name must be at least 1 characters long")

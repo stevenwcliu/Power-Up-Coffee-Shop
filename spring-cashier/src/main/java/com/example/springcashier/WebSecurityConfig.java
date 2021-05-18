@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -29,15 +31,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   }
 
   @Bean
-  @Override
-  public UserDetailsService userDetailsService() {
-    UserDetails user =
-       User.withDefaultPasswordEncoder()
-        .username("sam")
-        .password("samspassword")
-        .roles("BARISTA")
-        .build();
-    return new InMemoryUserDetailsManager(user);
+  public InMemoryUserDetailsManager getInMemoryUserDetailsManager(){
+          return new InMemoryUserDetailsManager();
   }
+
+  @Override
+  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+      auth.inMemoryAuthentication().passwordEncoder(NoOpPasswordEncoder.getInstance())
+              .withUser("admin").password("admin1pass").roles("USER", "ADMIN").and()
+              .withUser("manager").password("managerpass").roles("MANAGER").and()
+              .withUser("sam").password("samspass").roles("BARISTA").and()
+              .withUser("user3").password("user3pass").roles("BARISTA");
+  }
+
+  
 }
 

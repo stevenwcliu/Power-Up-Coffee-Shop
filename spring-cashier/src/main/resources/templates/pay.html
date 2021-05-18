@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Starbucks Pay Order</title>
+        <link rel="stylesheet" th:href="@{/styles.css}" />  
+    </head>
+    <body>
+        <h1>Pay Order!</h1>
+    <img th:src="@{/images/starbucksLogo.png}"/>
+
+    <br />
+    <form  action="/design" >
+      <input type="submit" value="New Order"/>
+    </form>
+    &emsp;
+    <form action="/order" >
+        <input type="submit" value="Get Order(s)"/>
+    </form>
+    </div>
+
+    <br/>
+
+    <form method="POST" th:object="${orderPayment}">
+      
+      <div class = "nameError">
+        <span class="validationError"
+          th:if="${#fields.hasErrors('name')}"
+          th:errors="*{name}">Name Error<br /></span>
+      </div>
+      <div class = "orderNumberError">
+        <span class="validationError"
+          th:if="${#fields.hasErrors('orderNumber')}"
+          th:errors="*{orderNumber}">Order Number Error<br /></span>
+      </div>
+      <div class = "cardNumberError">
+        <span class="validationError"
+          th:if="${#fields.hasErrors('cardNumber')}"
+          th:errors="*{cardNumber}">Card Number Error<br /></span>
+      </div>
+      <br />
+      <div th:if="${not#lists.isEmpty(messages)}">
+      <div class="messages">
+          <ul th:each="m : ${messages}">
+              <li th:text="${m.msg}"></li>
+          </ul>
+      </div>
+      </div>
+
+      <div class="message">
+        <span th:text="${message}">Response Message</span>
+      </div>
+    
+      <br/>
+      <div>
+        <h3>Name :</h3>
+        <input type="text" th:field="*{name}"/>
+
+        <h3>Order Number:</h3>
+        <input type="text" th:field="*{orderNumber}"/>
+
+        <h3>Card Number:</h3>
+        <input type="text" th:field="*{cardNumber}"/>
+      </div>
+      <br/>
+      <form  th:action="@{/pay}" method="post">
+            <button>Pay Order</button>
+      </form>
+      </div>
+      
+    </form>
+    <br/>
+        <!-- <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1> -->
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Starbucks All Orders</title>
+        <link rel="stylesheet" th:href="@{/styles.css}" />  
+    </head>
+    <body>
+        <h1>All Orders!</h1>
+    <img th:src="@{/images/starbucksLogo.png}"/>
+
+    <br />
+    <form action="/design" >
+      <input type="submit" value="New Order"/>
+    </form>
+    &emsp;
+    <form action="/pay" >
+      <input type="submit" value="Pay Order"/>
+    </form>
+    <br/>
+    <div class="message">
+      <span th:text="${message}">Response Message</span>
+    </div>
+    </div>
+    <br/>
+      
+        <div th:each="order : ${orders}">
+            <span text="Order Number: ">Order Number: </span>
+            <span th:text="${order.orderNumber}">Order Number</span><br/>
+            <span text="Order ID: ">Order ID: </span>
+            <span th:text="${order.id}">Order ID</span><br/>
+            <span text="Drink: ">Drink: </span>
+            <span th:text="${order.drink}">Order Drink</span><br/>
+            <span text="Milk: ">Milk: </span>
+            <span th:text="${order.milk}">Order Milk</span><br/>
+            <span text="Size: ">Size: </span>
+            <span th:text="${order.size}">Order Size</span><br/>
+            <span text="Total: ">Total: </span>
+            <span th:text="${order.total}">Order Total</span><br/>
+            <span text="Status: ">Status: </span>
+            <span th:text="${order.status}">Order Status</span><br/> <br/>
+        </div>
+     
+      <br/>
+
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </body>
+</html>

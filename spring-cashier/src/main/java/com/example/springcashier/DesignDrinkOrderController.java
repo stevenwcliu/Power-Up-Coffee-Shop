@@ -26,8 +26,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+
 import lombok.extern.slf4j.Slf4j;
-import com.example.springcashier.Taco;
+import com.example.springcashier.DrinkOrder;
 import com.example.springcashier.Ingredient;
 import com.example.springcashier.Ingredient.Type;
 
@@ -38,7 +40,9 @@ import lombok.Setter;
 @Slf4j
 @Controller
 @RequestMapping("/design")
-public class DesignTacoController {
+public class DesignDrinkOrderController {
+
+  public static HashMap<String, String> orderNumber = new HashMap<>();
 
   @Getter
   @Setter
@@ -66,7 +70,7 @@ public class DesignTacoController {
 	  // KONG URL
 	  final String KONG = "http://146.148.103.73/api";
 	
-    private static Map<String, String> itemType = new HashMap<>();
+    public static Map<String, String> itemType = new HashMap<>();
     static {
       itemType.put("CFLA","DRINK");
       itemType.put("CFAM","DRINK");
@@ -109,14 +113,13 @@ public void addIngredientsToModel(Model model) {
 
   @GetMapping
   public String showDesignForm(Model model) {
-    model.addAttribute("design", new Taco());
+    model.addAttribute("design", new DrinkOrder());
     return "design";
   }
 
 
-
   @PostMapping
-  public String processDesign(@Valid @ModelAttribute("design") Taco design, Errors errors, Model model) {
+  public String processDesign(@Valid @ModelAttribute("design") DrinkOrder design, Errors errors, Model model) {
     
     String drink = "";
     String milk = "";
@@ -145,7 +148,7 @@ public void addIngredientsToModel(Model model) {
       else if(itemType.get(item.substring(item.length()-4)).equals("MILK")) {
         milkTypeCount++;
       }
-      else {
+      else if(itemType.get(item.substring(item.length()-4)).equals("SIZE")){
         sizeTypeCount++;
       }
     }
@@ -190,15 +193,23 @@ public void addIngredientsToModel(Model model) {
     try {
       HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
       System.out.println(response.body());
-    } catch (Exception e) {
-      System.out.println(e);
-    }
-    System.out.println("Done!");
+      ObjectMapper orderMapper =  new ObjectMapper();
+      Order newOrder =  orderMapper.readValue(response.body(), Order.class);
+      System.out.println(newOrder);
+      orderNumber.put(String.valueOf(newOrder.getId()), String.valueOf(generatedOrderNumber));
+      System.out.println("HashMap: "+orderNumber);
     } catch (Exception e) {
       System.out.println(e);
     }
     
-    return "redirect:/";
+      System.out.println("New Order Placed!");
+      model.addAttribute( "message", "New Order Placed! Your Order Number is: "+ generatedOrderNumber);
+      return "design";
+    } catch (Exception e) {
+      System.out.println(e);
+    }
+    
+    return "redirect:design";
   }
 
 
