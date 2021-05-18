@@ -1,4 +1,4 @@
-# Team Project (Skyline Cloud)
+# Team Journal (Skyline Cloud)
 
 Team Journals should include
 * Overall Architecture Diagram of your Cloud Deployment  
