@@ -221,7 +221,7 @@ We deploy the docker image of the online store application to GKE to create a lo
 
 We use the spring security to implment the login and sign out functionalities to secure the application. Only with valid user name and password can allow a user to mange their starbucks card.
 
-![login](Journals/images/howie/valid.png)
+![login](Journals/images/howie/invalid.png)
 
 ![signout](Journals/images/howie/signout.png)
 
@@ -232,7 +232,7 @@ The cybersource payment gateway is to validate the transaction made by custemors
 
 ![cyber](Journals/images/howie/cyber.png)
 
-![valid](Journals/images/howie/detial1.png)
+![valid](Journals/images/howie/detail1.png)
 
 ![login](Journals/images/howie/detail2.png)
 
