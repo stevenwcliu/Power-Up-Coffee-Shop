@@ -1,6 +1,6 @@
-# Team Journal (Skyline Cloud)
+# Team Journals (Skyline Cloud)
 
-Team Journals should include
+Team Journalss should include
 * Overall Architecture Diagram of your Cloud Deployment  
 
 A section for each of the following discussion the features implemented  
@@ -18,35 +18,35 @@ The feature of the Backoffice Help Desk App would be to assist customer who are 
 Since the online store is used by the custemors, a login feature is required and implmented for custemors to only access to their private card information. The login feature implemented using Spring security to secure the online store application.
 
 
-![login](Journal/images/howie/login.png)
+![login](Journalss/images/howie/login.png)
 
 
 2. View Rewards
 
 The feature of the online store which allows users to view their Starbucks card rewards is implemented. By selecting Reward on the navigation bar, users are navigated to the reward page where they van view the starbucks reward with corresponding card number and card code. The reward items are shown at the side. 
 
-![reward](Journal/images/howie/before-re.png)
+![reward](Journalss/images/howie/before-re.png)
 
 
 3. View Balance 
 
 The users can also view their Starbucks card balance using the online store. When clicking Cards on the navigation bar, users can view their card balance along with the card number and card code on the card page. Additionally, an Add button is provided for users to load their starbucks card with a new credit card payment.
 
-![balance](Journal/images/howie/before-bal.png)
+![balance](Journalss/images/howie/before-bal.png)
 
 4. Add payment to load the Starbucks card
 
 Users can add a new credit card payment on the card page when viewing their card balance by clicking on the Add button. After users filled the payment information, the card will be loaded with credits from the credit card.
 
-![add](Journal/images/howie/add1.png)
+![add](Journalss/images/howie/add1.png)
 
-![add](Journal/images/howie/add2.png)
+![add](Journalss/images/howie/add2.png)
 
 5. Sign out 
 
 The sign out feature is implemented for users who have multiple accounts. A sign out button is placed on the right bottom corner to allow users to sign out the current account. 
 
-![signout](Journal/images/howie/signout.png)
+![signout](Journalss/images/howie/signout.png)
 
 
 ## REST API  
@@ -196,7 +196,7 @@ We are using the Kong API Gateway to establish communication between clients wit
 
 ## Cloud Deployments  
 
-![diagram](Journal/images/howie/diagram.png)
+![diagram](Journals/images/howie/diagram.png)
 
 How does your Team's System Scale?  Can it handle > 1 Million Mobile Devices?  
 
@@ -211,30 +211,30 @@ Discussion with screenshot evidence of how each technical requirement is meet.
 
 We deploy the docker image of the online store application to GKE to create a loadbalancer. 
 
-![docker](Journal/images/howie/docker.png)
+![docker](Journals/images/howie/docker.png)
 
-![workload](Journal/images/howie/workload.png)
+![workload](Journals/images/howie/workload.png)
 
-![service](Journal/images/howie/service.png)
+![service](Journals/images/howie/service.png)
 
 2. Spring Security 
 
 We use the spring security to implment the login and sign out functionalities to secure the application. Only with valid user name and password can allow a user to mange their starbucks card.
 
-![login](Journal/images/howie/valid.png)
+![login](Journals/images/howie/valid.png)
 
-![signout](Journal/images/howie/signout.png)
+![signout](Journals/images/howie/signout.png)
 
 
 3. Cybersource Payment Gateway
 
 The cybersource payment gateway is to validate the transaction made by custemors when they want to load credits to their starbucks card. If the validation go through, credits will be loaded to the starbucks card.
 
-![cyber](Journal/images/howie/cyber.png)
+![cyber](Journals/images/howie/cyber.png)
 
-![valid](Journal/images/howie/detial1.png)
+![valid](Journals/images/howie/detial1.png)
 
-![login](Journal/images/howie/detail2.png)
+![login](Journals/images/howie/detail2.png)
 
 
 ## Challenges
