@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Starbucks Drink Order</title>
+        <link rel="stylesheet" th:href="@{/styles.css}" />  
+    </head>
+    <body>
+        <h1>Design your drink!</h1>
+    <img th:src="@{/images/starbucksLogo.png}"/>
+
+    <br />
+    <form action="/order">
+      <input type="submit" value="Get Order(s)"/>
+    </form>
+    &emsp;
+    <form action="/pay" >
+      <input type="submit" value="Pay Order"/>
+    </form>
+    <br />
+    <form method="POST" th:object="${design}">
+
+
+    <span class="validationError"
+          th:if="${#fields.hasErrors('ingredients')}" 
+          th:errors="*{ingredients}">   <br />Ingredient Error
+          
+    </span>
+ 
+    <div class = "nameError">
+      <span class="validationError"
+        th:if="${#fields.hasErrors('name')}"
+        th:errors="*{name}">Name Error</span>
+    </div>
+    <br />
+    <div th:if="${not#lists.isEmpty(messages)}">
+      <div class="messages">
+          <ul th:each="m : ${messages}">
+              <li th:text="${m.msg}"></li>
+          </ul>
+      </div>
+      </div>
+
+      <div class="message">
+        <span th:text="${message}">Response Message</span>
+      </div>
+    
+      <br/>
+      
+      </div>
+   
+    <div class="grid">
+
+      <div class="ingredient-group" id="drinks">
+
+      <h3>Section 1: Designate your drink:</h3>
+      <div th:each="ingredient : ${drink}">
+        <input name="ingredients" type="checkbox" th:value="${ingredient.name}+${ingredient.id}" />
+        <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+      </div>
+
+      </div>
+
+	  <div class="ingredient-group" id="milk">
+      <h3>Section 2: Pick your milk:</h3>
+      <div th:each="ingredient : ${milk}">
+        <input name="ingredients" type="checkbox" th:value="${ingredient.name}+${ingredient.id}" />
+        <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+      </div>
+      </div>
+
+
+	  <div class="ingredient-group" id="size">
+      <h3>Section 3: Determine your cup size:</h3>
+      <div th:each="ingredient : ${size}">
+        <input name="ingredients" type="checkbox" th:value="${ingredient.name}+${ingredient.id}" />
+        <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+      </div>
+      </div>
+
+	  
+      </div>
+
+      <div>
+
+
+      <h3>Name your drink creation:</h3>
+      <input type="text" th:field="*{name}"/>
+        
+      <!-- th:action="@{/logout}" -->
+      <br/>
+      <form  th:action="@{/design}" method="post">
+            <button>Submit your drink</button>
+      </form>
+      </div>
+
+    </form>
+        <!-- <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1> -->
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </body>
+</html>
