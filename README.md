@@ -18,35 +18,35 @@ The feature of the Backoffice Help Desk App would be to assist customer who are 
 Since the online store is used by the custemors, a login feature is required and implmented for custemors to only access to their private card information. The login feature implemented using Spring security to secure the online store application.
 
 
-![login](Journalss/images/howie/login.png)
+![login](Journals/images/howie/login.png)
 
 
 2. View Rewards
 
 The feature of the online store which allows users to view their Starbucks card rewards is implemented. By selecting Reward on the navigation bar, users are navigated to the reward page where they van view the starbucks reward with corresponding card number and card code. The reward items are shown at the side. 
 
-![reward](Journalss/images/howie/before-re.png)
+![reward](Journals/images/howie/before-re.png)
 
 
 3. View Balance 
 
 The users can also view their Starbucks card balance using the online store. When clicking Cards on the navigation bar, users can view their card balance along with the card number and card code on the card page. Additionally, an Add button is provided for users to load their starbucks card with a new credit card payment.
 
-![balance](Journalss/images/howie/before-bal.png)
+![balance](Journals/images/howie/before-bal.png)
 
 4. Add payment to load the Starbucks card
 
 Users can add a new credit card payment on the card page when viewing their card balance by clicking on the Add button. After users filled the payment information, the card will be loaded with credits from the credit card.
 
-![add](Journalss/images/howie/add1.png)
+![add](Journals/images/howie/add1.png)
 
-![add](Journalss/images/howie/add2.png)
+![add](Journals/images/howie/add2.png)
 
 5. Sign out 
 
 The sign out feature is implemented for users who have multiple accounts. A sign out button is placed on the right bottom corner to allow users to sign out the current account. 
 
-![signout](Journalss/images/howie/signout.png)
+![signout](Journals/images/howie/signout.png)
 
 
 ## REST API  
