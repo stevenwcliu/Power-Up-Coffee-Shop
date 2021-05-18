@@ -12,7 +12,42 @@ Due to only having 2 members out of 4 members for the group project. We decided 
 The feature of the Backoffice Help Desk App would be to assist customer who are having problems with rewards and their Starbucks Card credits. Also would have a register feature for registering Starbucks employees working the shops like the Baristas and Managers. 
 
 ## Online Store  
-What features were implemented?  
+
+1. Login 
+
+Since the online store is used by the custemors, a login feature is required and implmented for custemors to only access to their private card information. The login feature implemented using Spring security to secure the online store application.
+
+
+![login](Journal/images/howie/login.png)
+
+
+2. View Rewards
+
+The feature of the online store which allows users to view their Starbucks card rewards is implemented. By selecting Reward on the navigation bar, users are navigated to the reward page where they van view the starbucks reward with corresponding card number and card code. The reward items are shown at the side. 
+
+![reward](Journal/images/howie/before-re.png)
+
+
+3. View Balance 
+
+The users can also view their Starbucks card balance using the online store. When clicking Cards on the navigation bar, users can view their card balance along with the card number and card code on the card page. Additionally, an Add button is provided for users to load their starbucks card with a new credit card payment.
+
+![balance](Journal/images/howie/before-bal.png)
+
+4. Add payment to load the Starbucks card
+
+Users can add a new credit card payment on the card page when viewing their card balance by clicking on the Add button. After users filled the payment information, the card will be loaded with credits from the credit card.
+
+![add](Journal/images/howie/add1.png)
+
+![add](Journal/images/howie/add2.png)
+
+5. Sign out 
+
+The sign out feature is implemented for users who have multiple accounts. A sign out button is placed on the right bottom corner to allow users to sign out the current account. 
+
+![signout](Journal/images/howie/signout.png)
+
 
 ## REST API  
 Final design with sample request/response  
@@ -156,14 +191,51 @@ DELETE 	/orders
 ```
 
 ## Integrations  
-Which integrations were selected?  
+
+We are using the Kong API Gateway to establish communication between clients with microservices. The Kong API Gateway helps the cashier application fetches the corresponding card information from the online store where users can manage their starbucks card. It also provide the functionality of activating a new starbuck card from the custemor to pay the orders. Our project have also used the Cybersource Payment Gateway to validate payments from clients. Each transaction will be sent to the cybersource, and once the validation is done, a payment then can be processed by the cashier application. 
 
 ## Cloud Deployments  
-Design Notes on GitHub an Architecture Diagram of the overall Deployment.  
+
+![diagram](Journal/images/howie/diagram.png)
+
 How does your Team's System Scale?  Can it handle > 1 Million Mobile Devices?  
 
 ## Technical Requirements  
 Discussion with screenshot evidence of how each technical requirement is meet.  
+
+---
+
+### Online Store Application
+
+1. Deployment to GKE
+
+We deploy the docker image of the online store application to GKE to create a loadbalancer. 
+
+![docker](Journal/images/howie/docker.png)
+
+![workload](Journal/images/howie/workload.png)
+
+![service](Journal/images/howie/service.png)
+
+2. Spring Security 
+
+We use the spring security to implment the login and sign out functionalities to secure the application. Only with valid user name and password can allow a user to mange their starbucks card.
+
+![login](Journal/images/howie/valid.png)
+
+![signout](Journal/images/howie/signout.png)
+
+
+3. Cybersource Payment Gateway
+
+The cybersource payment gateway is to validate the transaction made by custemors when they want to load credits to their starbucks card. If the validation go through, credits will be loaded to the starbucks card.
+
+![cyber](Journal/images/howie/cyber.png)
+
+![valid](Journal/images/howie/detial1.png)
+
+![login](Journal/images/howie/detail2.png)
+
 
 ## Challenges
 
