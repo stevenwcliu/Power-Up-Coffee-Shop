@@ -72,20 +72,20 @@ public class StarbucksCardController{
   public String rewards( @ModelAttribute("command") StarbucksCard command, 
     Model model) {
 
-     
-    model.addAttribute("cardlist",card);
-
     try {
       HttpClient client = HttpClient.newHttpClient();
       HttpRequest request = HttpRequest.newBuilder()
-      .uri(URI.create(KONG+"/rewards"))
+      .uri(URI.create(KONG+"/cards/"+card.getCardNumber()))
       .header(API_KEY, API_KEY_VALUE)
       .header("Content-Type", "application/json")
       .build();
 
       try {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        ObjectMapper cardMapper = new ObjectMapper();
+        card = cardMapper.readValue(response.body(),StarbucksCard.class);
         System.out.println(response.body());
+        System.out.println(card);
       } catch (Exception e) {
         System.out.println(e);
       }
@@ -93,6 +93,8 @@ public class StarbucksCardController{
     } catch (Exception e) {
       System.out.println(e);
     }
+
+    model.addAttribute("cardlist",card);
 
 
     return "rewards" ;
@@ -102,20 +104,21 @@ public class StarbucksCardController{
     //rendering the card page
   @GetMapping("/cards")
   public String cards(Model model){
- 
-    model.addAttribute("cardlist",card);
-    
+
     try {
       HttpClient client = HttpClient.newHttpClient();
       HttpRequest request = HttpRequest.newBuilder()
-      .uri(URI.create(KONG+"/cards"+card.getCardNumber()))
+      .uri(URI.create(KONG+"/cards/"+card.getCardNumber()))
       .header(API_KEY, API_KEY_VALUE)
       .header("Content-Type", "application/json")
       .build();
 
       try {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        ObjectMapper cardMapper = new ObjectMapper();
+        card = cardMapper.readValue(response.body(),StarbucksCard.class);
         System.out.println(response.body());
+        System.out.println(card);
       } catch (Exception e) {
         System.out.println(e);
       }
@@ -124,6 +127,7 @@ public class StarbucksCardController{
       System.out.println(e);
     }
 
+    model.addAttribute("cardlist",card);
 
     return "cards";
   }
@@ -166,7 +170,7 @@ public class StarbucksCardController{
     auth.billToEmail = command.getEmail() ;
     if(auth.cardType.equals("ERROR")){
       System.out.println("Unsupported card type.");
-      return "cards";
+      return "add";
     }
 
     boolean authValid = true ;
@@ -177,7 +181,7 @@ public class StarbucksCardController{
     if ( !authResponse.status.equals("AUTHORIZED") ) {
       authValid = false;
       System.out.println(authResponse.message);
-      return "cards";
+      return "add";
     }
 
     boolean captureValid = true ;
@@ -193,7 +197,7 @@ public class StarbucksCardController{
       if ( !captureResponse.status.equals("PENDING") ) {
         captureValid = false ;
         System.out.println(captureResponse.message);
-        return "cards";
+        return "add";
       }
 
     }
@@ -232,11 +236,8 @@ public class StarbucksCardController{
 
     }
 
-    return "cards";
+    return "add";
   }
-
-
-
 
   @GetMapping("/add")
   public String addPage(@ModelAttribute("command") PaymentInfo command,

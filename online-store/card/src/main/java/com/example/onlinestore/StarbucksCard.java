@@ -23,7 +23,7 @@ class StarbucksCard {
     private String cardNumber;
     private String cardCode;
     private double balance;
-    private Integer rewards;
+    private int reward;
     private boolean activated;
     private String status;
 

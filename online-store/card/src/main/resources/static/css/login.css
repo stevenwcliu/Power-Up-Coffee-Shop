@@ -1,0 +1,75 @@
+body{
+	margin:0;
+	padding:0;
+	font-family: sans-serif;
+	background: #00a862;
+}
+
+.login h1{
+	color:#00a862;
+	text-transform: uppercase;
+	font-weight: 500px;
+}
+
+
+.login label{
+	color:#00a862;
+
+}
+
+.login{
+	width:300px;
+	padding: 40px;
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	background: white;
+	text-align: center;
+	box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+
+}
+
+.login input[type="text"], .login input[type="password"]{
+	border:0;
+	background: none;
+	display: block;
+	margin:20px auto;
+	text-align: center;
+	border:2px solid #00a862;
+	padding: 14px 10px;
+	border-radius: 20px;
+	width: 200px;
+	color: green;
+	outline: none;
+	transition: 0.2s;
+	font-size: 20px;
+}
+
+.login input[type="text"]:focus, .login input[type="password"]:focus{
+	box-shadow: 0 0 2px 1px green;
+	border: 2px solid green;
+}
+
+.login input[type="submit"]{
+	border:0;
+	background: none;
+	display: block;
+	margin:20px auto;
+	text-align: center;
+	border:2px solid #00a862;
+	padding: 14px 10px;
+	width: 100px;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: all 0.35s ease;
+	color: #fff;
+	background: #00a862;
+	font-size: 110%;
+}
+
+.login input[type="submit"]:hover{
+	cursor: pointer;
+	background: white;
+	color:#008f53;
+}

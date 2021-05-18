@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
-xmlns:th="http://www.thymeleaf.org">
+xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 	<meta charset="UTF-8">
 	<title>Starbucks Cards</title>
-	<link rel="stylesheet" th:href="@{/styles.css}"/>
+	<link rel="stylesheet" th:href="@{/css/styles.css}"/>
 </head>
 <body>
 	<section>
@@ -16,38 +17,48 @@ xmlns:th="http://www.thymeleaf.org">
 				<li><a th:href="@{rewards}">REWARDS</a></li>
 			</ul>
 		</header>
-	 	<div class = "content">
+		<div class = "content">
 
-	 		<div class = "greeting">
-	 			<h2 class = "increase">Starbucks Cards<br></h2>
-	 			<ul style="list-style: none">
-	 				<li><a class = "text-sm" style="color:green;font-size:20px;text-decoration:none" th:href="@{add}">Add</a></li>
-	 			</ul>
-	 		</div>
-	 		 
-	 		<div class = "card">
-	 		 	<h2>Your Cards</h2>
-	 			<table class="table">
-	 				<thead>
-	 					<tr>
-	 						<th>CardNumber</th>
-	 						<th>Balance</th>
-	 					</tr>
-	 				</thead>
-	 				<tbody>
-	 					<tr th:each="card:${cardlist}">
-	 						<td th:text = "${card.cardNumber}"></td>
-	 						<td th:text = "${card.balance}"></td>
-	 					</tr>
+			<div class = "greeting">
+				<h2 class = "increase">Starbucks Cards<br></h2>
+				<ul style="list-style: none">
+					<li><a class = "text-sm" style="color:green;font-size:20px;text-decoration:none" th:href="@{add}">Add</a></li>
+				</ul>
+			</div>
+			
+			<div class = "card">
+				<h2>Your Cards</h2>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>CardNumber</th>
+							<th>Balance</th>
+							<th>CardCode</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="card:${cardlist}">
+							<td th:text = "${card.cardNumber}"></td>
+							<td th:text = "${card.balance}"></td>
+							<td th:text = "${card.cardCode}"></td>
+						</tr>
 
-	 				</tbody>
-	 				
+					</tbody>
+					
 
-	 			</table>
-	 		</div>
+				</table>
+			</div>
 
 
-	 	</div>
+		</div>
+
+		<div class="logout">
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign Out"/>
+			</form>
+		</div>
+
+		
 
 	</section>
 

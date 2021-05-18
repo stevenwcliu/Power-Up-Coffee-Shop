@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
-xmlns:th="http://www.thymeleaf.org">
+xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 	<meta charset="UTF-8">
 	<title>Add Card</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" type="text/css"/>
-	<link rel="stylesheet" th:href="@{/styles.css}"/>
-	<link rel="stylesheet" th:href = "@{/newcard.css}"/>
+	<link rel="stylesheet" th:href="@{/css/styles.css}"/>
+	<link rel="stylesheet" th:href = "@{/css/newcard.css}"/>
 </head>
 <body>
 	<section>
@@ -18,121 +19,127 @@ xmlns:th="http://www.thymeleaf.org">
 				<li><a th:href="@{rewards}">REWARDS</a></li>
 			</ul>
 		</header>
-		<h2 class = "title">Starbucks Card</h2>
-	 	<div class = "payment">
-	 		<div class = "wrapper">
+		<div class = "payment">
+			<div class = "wrapper">
 
-	 			<h4>ADD A STARBUCKS CARD</h4>
-	 			<p class="box">Add a Starbucks Card to order ahead, pay in store, and earn Rewards.</p><br>
-	 			<form method="POST" th:object="${command}" th:action = "@{/adds}">
-	 				<p>Card NickName</p>
-	 				<div class = "input-group">
-	 					<div class = "input-box">
-	 						<input type="text" placeholder="Nickname" required class="info">
-	 					</div>
-	 				</div>
-	 				
-	 				<div class ="input-group">
-	 					<div class="input-box">
-	 						<p>Card Type </p>
-	 						<input type="radio" name ="pay" id="bc1" checked class="radio" value = "1" th:field="*{cardType}">
-	 						<label for="bc1"><span style="font-weight:200">Credit Card</span></label>
-	 						<input type="radio" name ="pay" id="bc2" checked class="radio" value = "2" th:field="*{cardType}">
-	 						<label for="bc2"><span style="font-weight:200">Debit Card </span></label>
-	 						<i class="fa fa-cc-mastercard">&nbsp</i><i class="fa fa-cc-visa"></i>		
-	 					</div>
-	 				</div>
+				<h4>ADD A STARBUCKS CARD</h4>
+				<p class="box">Add a Starbucks Card to order ahead, pay in store, and earn Rewards.</p><br>
+				<form method="POST" th:object="${command}" th:action = "@{/adds}">
+					<p>Card NickName</p>
+					<div class = "input-group">
+						<div class = "input-box">
+							<input type="text" placeholder="Nickname" required class="info">
+						</div>
+					</div>
 
-	 				<div class = "input-group">
-	 					<div class = "input-box">
-	 						<p>First Name</p>
-	 						<input type="text" placeholder="First Name" required class="name" th:field="*{firstname}">
-	 						<i class="fa fa-user icon"></i>
-	 					</div>
-	 					<div class="input-box">
-	 						<p>Last Name</p>
-	 						<input type="text" placeholder="Last Name" required class="name" th:field="*{lastname}">
-	 						<i class="fa fa-user icon"></i>
-	 					</div>
-	 				</div>
+					<div class ="input-group">
+						<div class="input-box">
+							<p>Card Type </p>
+							<input type="radio" name ="pay" id="bc1" checked class="radio" value = "1" th:field="*{cardType}">
+							<label for="bc1"><span style="font-weight:200">Credit Card</span></label>
+							<input type="radio" name ="pay" id="bc2" checked class="radio" value = "2" th:field="*{cardType}">
+							<label for="bc2"><span style="font-weight:200">Debit Card </span></label>
+							<i class="fa fa-cc-mastercard">&nbsp</i><i class="fa fa-cc-visa"></i>		
+						</div>
+					</div>
 
-	 				<div class="input-box">
-	 						<p>Billing Address</p>
-	 						<input type="text" placeholder="Billing Address" required class="info" th:field="*{address}">
-	 				</div>
+					<div class = "input-group">
+						<div class = "input-box">
+							<p>First Name</p>
+							<input type="text" placeholder="First Name" required class="name" th:field="*{firstname}">
+							<i class="fa fa-user icon"></i>
+						</div>
+						<div class="input-box">
+							<p>Last Name</p>
+							<input type="text" placeholder="Last Name" required class="name" th:field="*{lastname}">
+							<i class="fa fa-user icon"></i>
+						</div>
+					</div>
 
-	 				<div class = "input-group">
-	 					<div class = "input-box">
-	 						<p>City</p>
-	 						<input type="text" placeholder="City Name" required class="info" th:field="*{city}">
-	 					</div>
-	 					<div class="input-box">
-	 						<p>State</p>
-	 						<input type="text" placeholder="State Name" required class="info" th:field="*{state}">	 						 
-	 					</div>
-	 					<div class="input-box">
-	 						<p>Zipcode</p>
-	 						<input type="text" placeholder="Zipcode" required class="info" th:field="*{zip}">	 						 
-	 					</div>
-	 				</div>
+					<div class="input-box">
+						<p>Billing Address</p>
+						<input type="text" placeholder="Billing Address" required class="info" th:field="*{address}">
+					</div>
 
-	 				<div class="input-box">
-	 						<p>Phone Number</p>
-	 						<input type="text" placeholder="Phone Number" required class="name" th:field="*{phonenumber}">
-	 						<i class="fa fa-phone icon"></i>
-	 				</div>
+					<div class = "input-group">
+						<div class = "input-box">
+							<p>City</p>
+							<input type="text" placeholder="City Name" required class="info" th:field="*{city}">
+						</div>
+						<div class="input-box">
+							<p>State</p>
+							<input type="text" placeholder="State Name" required class="info" th:field="*{state}">	 						 
+						</div>
+						<div class="input-box">
+							<p>Zipcode</p>
+							<input type="text" placeholder="Zipcode" required class="info" th:field="*{zip}">	 						 
+						</div>
+					</div>
 
-	 				<div class="input-box">
-	 						<p>Email</p>
-	 						<input type="text" placeholder="Email Address" required class="name" th:field="*{email}">
-	 						<i class="fa fa-envelope icon"></i>
-	 				</div>
+					<div class="input-box">
+						<p>Phone Number</p>
+						<input type="text" placeholder="Phone Number" required class="name" th:field="*{phonenumber}">
+						<i class="fa fa-phone icon"></i>
+					</div>
 
-
-	 				<div class = "input-group">
-	 					<div class = "input-box">
-	 						<p>Card Number</p> 
-	 						<input type="text" placeholder="Card Number" required class="name" th:field="*{cardNum}">
-	 						<i class="fa fa-credit-card icon"></i>
-	 					</div>
-	 				</div>
-
-	 				<div class = "input-group">
-	 					<div class = "input-box">
-	 						<p>Expiration Date</p> 
-	 						<input type="text" placeholder="MM" required class="dob" th:field="*{expMon}">
-	 					 
-	 					 	<input type="text" placeholder="YY" required class ="dob" th:field="*{expYear}">
-	 			 
-	 					</div>
-	 				</div>
+					<div class="input-box">
+						<p>Email</p>
+						<input type="text" placeholder="Email Address" required class="name" th:field="*{email}">
+						<i class="fa fa-envelope icon"></i>
+					</div>
 
 
+					<div class = "input-group">
+						<div class = "input-box">
+							<p>Card Number</p> 
+							<input type="text" placeholder="Card Number" required class="name" th:field="*{cardNum}">
+							<i class="fa fa-credit-card icon"></i>
+						</div>
+					</div>
 
-	 				<div class = "input-group">
-	 					<div class = "input-box">
-	 						<p>Card CVV</p>
-	 						<input type="text" placeholder="CVV Number" required class="name" th:field="*{cvv}"> 
-	 						<i class="fa fa-credit-card icon"></i>
-	 					</div>
-	 				</div>
+					<div class = "input-group">
+						<div class = "input-box">
+							<p>Expiration Date</p> 
+							<input type="text" placeholder="MM" required class="dob" th:field="*{expMon}">
 
-	 				<div class = "input-group">
-	 					<div class = "input-box">
-	 						<button type = "submit" onclick="document.getElementById('myInput').value = ''"> ADD CARD </button>
-	 						 
-	 					</div>
-	 				</div>
+							<input type="text" placeholder="YY" required class ="dob" th:field="*{expYear}">
+
+						</div>
+					</div>
 
 
 
-	 			</form>
-	 		</div>
+					<div class = "input-group">
+						<div class = "input-box">
+							<p>Card CVV</p>
+							<input type="text" placeholder="CVV Number" required class="name" th:field="*{cvv}"> 
+							<i class="fa fa-credit-card icon"></i>
+						</div>
+					</div>
+
+					<div class = "input-group">
+						<div class = "input-box">
+							<button type = "submit" onclick="document.getElementById('myInput').value = ''">ADD CARD 
+							</button>
+
+						</div>
+					</div>
+
+
+
+				</form>
+			</div>
 
 
 
 
-	 	</div>
+		</div>
+
+		<div class="logout">
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign Out"/>
+			</form>
+		</div>
 
 	</section>
 
