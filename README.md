@@ -4,6 +4,15 @@ Team Journalss should include
 * Overall Architecture Diagram of your Cloud Deployment  
 
 A section for each of the following discussion the features implemented  
+
+
+## Project Demo Link
+
+Below is the share link to the google drive recording demo of our project application.
+
+https://drive.google.com/file/d/1c-VhpVVrTI6Xps8ZFvSpuLlA1wWFV1xf/view?usp=sharing
+
+
 ## Cashier's App  
 What features were implemented? 
 
@@ -196,7 +205,7 @@ We are using the Kong API Gateway to establish communication between clients wit
 
 ## Cloud Deployments  
 
-![diagram](Journals/images/howie/dia.png)
+![diagram](Journals/images/howie/GKE.png)
 
 How does your Team's System Scale?  Can it handle > 1 Million Mobile Devices?  
 
