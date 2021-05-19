@@ -1,25 +1,17 @@
 # Team Journals (Skyline Cloud)
 
 
-<<<<<<< HEAD
-A section for each of the following discussion the features implemented  
+## Project Demo
 
-
-## Project Demo Link
-
-Below is the share link to the google drive recording demo of our project application.
+Below is the link to the project recording demo.
 
 https://drive.google.com/file/d/1c-VhpVVrTI6Xps8ZFvSpuLlA1wWFV1xf/view?usp=sharing
 
-
-=======
->>>>>>> 26346cf6877b1e4eb4b9ad4f6b7f0f9fdaafcb0c
 ## Cashier's App  
 
 1. Login 
 
-Cashier's application is used by the Starbucks barista, a login feature is required and implmented for starbucks employees to only access to the register and order information. The logi
-n feature implemented using Spring Security dependency to secure the cashier's application.
+Cashier's application is used by the Starbucks barista, a login feature is required and implmented for starbucks employees to only access to the register and order information. The login feature implemented using Spring Security dependency to secure the cashier's application.
 
 
 ![login](Journals/images/ajit/teamJournal/cashier_app_login.PNG)
@@ -109,12 +101,12 @@ Final design with sample request/response
 The Starbucks API Specification is as follows:
 
 ```
-GET 	/ping  
+GET   /ping  
   Ping Health Check.  
   {  
     "Test": "Starbucks API version 1.0 alive!"  
-  }		
-GET 	/cards 
+  }   
+GET   /cards 
    Get all Starbucks Cards from MySQL Database (along with balances).  
    [
       {
@@ -135,9 +127,9 @@ GET 	/cards
         "status": "New Card",
         "reward": 0
       }
-    ]		
-POST 	/cards
-		Create a new Starbucks Card.  
+    ]   
+POST  /cards
+    Create a new Starbucks Card.  
   {  
     "id": 58,
     "cardNumber": "261276112",
@@ -147,8 +139,8 @@ POST 	/cards
     "status": "New Card",
     "reward": 0
  }  
-GET 	/cards/{num}  
-		Get the details of a specific Starbucks Card.  
+GET   /cards/{num}  
+    Get the details of a specific Starbucks Card.  
  {  
     "id": 58,  
     "cardNumber": "261276112",  
@@ -157,9 +149,9 @@ GET 	/cards/{num}
     "activated": false,  
     "status": "New Card",  
     "reward": 40 
- }		
-POST 	/card/activate/{num}/{code}  
-		Activate Card  
+ }    
+POST  /card/activate/{num}/{code}  
+    Activate Card  
  {  
     "id": 58,  
     "cardNumber": "261276112",  
@@ -173,11 +165,11 @@ POST    /order/register/{regid}
         Create a new order. Set order as "active" for register.  
         Request:  
      {  
-	      "Drink": "Caffe Latte",  
-	      "Milk":  "Whole Milk",  
-	      "Size":  "Grande"  
+        "Drink": "Caffe Latte",  
+        "Milk":  "Whole Milk",  
+        "Size":  "Grande"  
      }            
-	    Response:   
+      Response:   
      {  
        "id": 65,  
        "drink": "Caffe Latte",  
@@ -185,7 +177,7 @@ POST    /order/register/{regid}
        "size": "Grande",  
        "total": 3.91,  
        "status": "Ready for Payment"  
-     }    	    
+     }          
 GET     /order/register/{regid}
         Request the current state of the "active" Order with a particular order number.  
    {
@@ -199,7 +191,7 @@ GET     /order/register/{regid}
 DELETE  /order/register/{regid}
         Clear the "active" Order with that particular order number.  
    {  
-		  "Status": "Active Order Cleared!"  
+      "Status": "Active Order Cleared!"  
    }   
 POST    /order/register/{regid}/pay/{cardnum}
         Process payment for the "active" Order with order number and activated Starbucks Card. 
@@ -233,12 +225,12 @@ GET     /orders
         "status": "Ready for Payment"
     }
   ]   
-DELETE 	/cards  
+DELETE  /cards  
     Delete all Cards (Use for Unit Testing Teardown)
     {  
       "Status": "All Cards Cleared!"  
     }
-DELETE 	/orders  
+DELETE  /orders  
     Delete all Orders (Use for Unit Testing Teardown)
    {
       "Status": "All Orders Cleared!"
@@ -281,12 +273,12 @@ Deployment step by step:
 
 ![Cluster](Journals/images/ajit/teamJournal/gke_cluster.PNG)
 
-![Workload](Journals/images/ajit/teamJournal/gke_workloads.PNG)	
+![Workload](Journals/images/ajit/teamJournal/gke_workloads.PNG) 
 
 ![Service](Journals/images/ajit/teamJournal/gke_services.PNG)
 
 ![Ingress](Journals/images/ajit/teamJournal/gke_ingress.PNG)
-	
+  
 We deploy the docker image of the online store application to GKE to create a loadbalancer. 
 
 ![docker](Journals/images/howie/docker.png)
@@ -361,4 +353,3 @@ If we try to consume the starbucks-api without the API Key in the header then we
 
 
 ## Challenges
-
