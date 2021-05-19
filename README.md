@@ -247,6 +247,8 @@ We are using the Kong API Gateway to establish communication between clients wit
 
 How does your Team's System Scale?  Can it handle > 1 Million Mobile Devices?  
 
+We packaged the web applications in Docker container images, and run the container images on a Google Kubernetes Engine (GKE) cluster. Then, we deploy the web application as a load-balanced set of replicas that can scale to the needs of the users. So meaning the deployment can be set on auto-scaling feature of the Google Kubernetes Engine (GKE) or manually scale the number of pods required based on user needs. 
+
 ## Technical Requirements  
 
 ### 1. Deployment to GKE
@@ -348,4 +350,4 @@ If we try to consume the starbucks-api without the API Key in the header then we
 
 ## Challenges
 
-The major challenge we have encountered is that we are missing two team members during the implementation of the whole project. Hence, we are missing the backend office application to make a strong connection between the cashier application and the online store application. During the deployment of the online store application to GKE, we were not able to create an ingress for the service. The ingress we created always had unhealthy backend service, however, the backend service was up and running correctly. We have tried many methods that we researched online but the issue remained.
+The major challenge we have encountered is that we are missing two team members during the implementation of the whole project. Hence, we are missing the backend office application to make a strong connection between the cashier application and the online store application. During the deployment of the online store application to GKE, we were not able to create an ingress for the service. The ingress we created always had unhealthy backend service, however, the backend service was up and running correctly. We have tried many methods that we researched online but the issue remained. We exposed the starbucks-online-store-deployment to the internet using a Service of type LoadBalancer.
