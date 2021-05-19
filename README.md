@@ -346,5 +346,6 @@ If we try to consume the starbucks-api without the API Key in the header then we
 ![Testing API without API Key](Journals/images/ajit/teamJournal/Rest-api-testing/get_ping_kong_api_authentication_no_api_key.PNG)
 
 
-
 ## Challenges
+
+The major challenge we have encountered is that we are missing two team members during the implementation of the whole project. Hence, we are missing the backend office application to make a strong connection between the cashier application and the online store application. During the deployment of the online store application to GKE, we were not able to create an ingress for the service. The ingress we created always had unhealthy backend service, however, the backend service was up and running correctly. We have tried many methods that we researched online but the issue remained.
