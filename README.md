@@ -248,11 +248,6 @@ We are using the Kong API Gateway to establish communication between clients wit
 How does your Team's System Scale?  Can it handle > 1 Million Mobile Devices?  
 
 ## Technical Requirements  
-Discussion with screenshot evidence of how each technical requirement is meet.  
-
----
-
-### Online Store Application
 
 ### 1. Deployment to GKE
 
