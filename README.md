@@ -305,9 +305,6 @@ Testing the reachability from GKE Jumbox Pod of the Cloud SQL starbucks-db Insta
 
 ![Jumpbox Testing](Journals/images/ajit/teamJournal/gke_cloud_shell_mysql.PNG)
 
-![MySQL Tables](Journals/images/ajit/teamJournal/gke_cloud_shell_mysql.PNG)
-
-![Jumpbox Testing](Journals/images/ajit/teamJournal/gke_cloud_shell_mysql.PNG)
 
 ### 2. Spring Security 
 
@@ -335,6 +332,7 @@ The cybersource payment gateway is to validate the transaction made by custemors
 ![valid](Journals/images/howie/detail1.png)
 
 ![login](Journals/images/howie/detail2.png)
+
 
 ### 4. Kong API Authentication Testing
 
