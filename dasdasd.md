@@ -1,8 +1,7 @@
 # Team Journals (Skyline Cloud)
 
-Team Journalss should include
-* Overall Architecture Diagram of your Cloud Deployment  
 
+<<<<<<< HEAD
 A section for each of the following discussion the features implemented  
 
 
@@ -13,8 +12,55 @@ Below is the share link to the google drive recording demo of our project applic
 https://drive.google.com/file/d/1c-VhpVVrTI6Xps8ZFvSpuLlA1wWFV1xf/view?usp=sharing
 
 
+=======
+>>>>>>> 26346cf6877b1e4eb4b9ad4f6b7f0f9fdaafcb0c
 ## Cashier's App  
-What features were implemented? 
+
+1. Login 
+
+Cashier's application is used by the Starbucks barista, a login feature is required and implmented for starbucks employees to only access to the register and order information. The logi
+n feature implemented using Spring Security dependency to secure the cashier's application.
+
+
+![login](Journals/images/ajit/teamJournal/cashier_app_login.PNG)
+
+
+2. New Order 
+
+The user which is the barista can also create a new order in the register when taking order from the customer. The user will have to select only one item from each section and click the submit your drink button. Once the new order is created, a order number will be generated which can be given to the customer for refernecing the order.
+
+![New Order](Journals/images/ajit/teamJournal/cashier_app_new_order.PNG)
+
+Updated MySQL Database table
+
+![New Order Database](Journals/images/ajit/teamJournal/cloud_sql_after_new_order.PNG)
+
+3. Get All Orders
+
+This feature allows the user to get all the active orders in the register for payment processing. The each order will have the following details: Order number, id, drink, milk, size, total amount and status.
+
+![Get All Order](Journals/images/ajit/teamJournal/cashier_app_get_all_orders.PNG)
+
+
+4. Pay Order
+
+The user can navigate to the pay order page by clicking the pay order button for allowing the customer to pay for the order. This is where the user would take the details from the customer about their order and starbuck's card payment method. For the successful payment the starbucks card must be activated using the Help Desk Application. The user has to type in the name of the customer, thier order number and starbucks card for the payment. 
+
+![Pay Order](Journals/images/ajit/teamJournal/cashier_app_pay_order_sucessful.PNG)
+
+Updated order status after payment, when clicked on get all orders.
+
+![Upadted Order Status](Journals/images/ajit/teamJournal/cashier_app_updated_order_status.PNG)
+
+Updated MySQL Database Tables, where you can see the upadated order status, updated starbucks card balance and updated rewards.
+
+![New Order Database](Journals/images/ajit/teamJournal/cloud_sql_after_pay_order.PNG)
+
+5. Sign out 
+
+The sign out feature is implemented so only starbucks staff can use the cashier's application. A sign out button is placed on the bottom left of the page to allow users to sign out the current account. 
+
+![signout](Journals/images/ajit/teamJournal/cashier_app_logout_spring_security.PNG)
 
 ## Backoffice Help Desk App  
 Due to only having 2 members out of 4 members for the group project. We decided that we would implement the Backoffice Help Desk App in the future if we were to continue to work on this project.  
@@ -216,8 +262,31 @@ Discussion with screenshot evidence of how each technical requirement is meet.
 
 ### Online Store Application
 
-1. Deployment to GKE
+### 1. Deployment to GKE
 
+Deployment step by step:  
+
+* Deployed spring-starbucks-api-deployment to GKE using deployment.yaml in starbucks-api/gcp_deployment folder and before that pushed the starbucks-api:v3 docker image to Docker Hub.
+* Created a Service for Starbucks API called spring-starbucks-api-service from service.yaml in the starbucks-api/gcp_deployment folder.
+* Testing the reachability from GKE Jumbox Pod of the starbucks-api-service
+* Apply Kong GKE Ingress Controller
+* Setting PROXY_IP to Kong's Public IP and testing Kong via Proxy IP
+* Created an Ingress rule to proxy the starbucks-api-service
+* Testing Kong API Ping Endpoint
+* Add Kong Key-Auth PlugIn
+* Configure an API Client Key and apply API Key Credentials to API Client using the created Kubernetes Secret Key.
+* Deployed spring-cashier-deployment to GKE using deployment.yaml in the spring-cashier folder and before that pushed the spring-cashier:v1 docker image to Docker Hub.
+* Created a Service called spring-cashier-service using service.yaml in the spring-cashier folder.
+* Created an ingress so the spring-cashier application can be accessed on the web.
+
+![Cluster](Journals/images/ajit/teamJournal/gke_cluster.PNG)
+
+![Workload](Journals/images/ajit/teamJournal/gke_workloads.PNG)	
+
+![Service](Journals/images/ajit/teamJournal/gke_services.PNG)
+
+![Ingress](Journals/images/ajit/teamJournal/gke_ingress.PNG)
+	
 We deploy the docker image of the online store application to GKE to create a loadbalancer. 
 
 ![docker](Journals/images/howie/docker.png)
@@ -226,16 +295,49 @@ We deploy the docker image of the online store application to GKE to create a lo
 
 ![service](Journals/images/howie/service.png)
 
-2. Spring Security 
+Creating a Cloud SQL MySQL Instance with specification listed below.
+* Instance ID:  starbucks-db
+* Password:     cmpe172starbucks
+* Version:      MySQL 8.0
+* Region:       Any
+* Zone:         Single Zone
+* Machine Type: Lightweight
+* Storage:      SSD / 35 GB
+* Connections:  Private IP
+* Network:      default (VPC Native)
+  - May require setting up a private service connnection
+  - 1. Enable Service Networking API
+  - 2. Use Automatic IP Range
 
+![Cloud SQL : MySQL Instance](Journals/images/ajit/teamJournal/gcp_cloud_sql_instance.PNG)
+
+![Overview](Journals/images/ajit/teamJournal/gke_cloud_sql_overview.PNG)
+
+![Databases](Journals/images/ajit/teamJournal/gke_cloud_sql_databases.PNG)
+
+Testing the reachability from GKE Jumbox Pod of the Cloud SQL starbucks-db Instance.
+
+![Jumpbox Testing](Journals/images/ajit/teamJournal/gke_cloud_shell_mysql.PNG)
+
+
+### 2. Spring Security 
+
+#### Online Store  
 We use the spring security to implment the login and sign out functionalities to secure the application. Only with valid user name and password can allow a user to mange their starbucks card.
 
 ![login](Journals/images/howie/invalid.png)
 
 ![signout](Journals/images/howie/signout.png)
 
+#### Cashier Application  
+We used Spring Security to implement the login and logout functionalities for the security ascept and also that only authorized users can access the application which are the Stabucks store staff.
 
-3. Cybersource Payment Gateway
+![Login](Journals/images/ajit/teamJournal/cashier_app_login_spring_security.PNG)
+
+![Logout](Journals/images/ajit/teamJournal/cashier_app_logout_spring_security.PNG)
+
+
+### 3. Cybersource Payment Portal
 
 The cybersource payment gateway is to validate the transaction made by custemors when they want to load credits to their starbucks card. If the validation go through, credits will be loaded to the starbucks card.
 
@@ -244,6 +346,18 @@ The cybersource payment gateway is to validate the transaction made by custemors
 ![valid](Journals/images/howie/detail1.png)
 
 ![login](Journals/images/howie/detail2.png)
+
+
+### 4. Kong API Authentication Testing
+
+For testing the API, I added the "apikey" as the header and header value as "Zkfokey2311" for API Key Authentication when testing the API in insomnia.
+
+![Testing API with API Key](Journals/images/ajit/teamJournal/Rest-api-testing/post_activate_card.PNG)
+
+If we try to consume the starbucks-api without the API Key in the header then we would get a 401 Unauthorized response status code shown in the below screenshot.
+
+![Testing API without API Key](Journals/images/ajit/teamJournal/Rest-api-testing/get_ping_kong_api_authentication_no_api_key.PNG)
+
 
 
 ## Challenges
