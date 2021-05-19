@@ -196,7 +196,7 @@ We are using the Kong API Gateway to establish communication between clients wit
 
 ## Cloud Deployments  
 
-![diagram](Journals/images/howie/diagram.png)
+![diagram](Journals/images/howie/dia.png)
 
 How does your Team's System Scale?  Can it handle > 1 Million Mobile Devices?  
 
