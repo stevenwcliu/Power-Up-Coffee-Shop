@@ -7,7 +7,7 @@ Below is the link to the project recording demo.
 
 https://drive.google.com/file/d/1c-VhpVVrTI6Xps8ZFvSpuLlA1wWFV1xf/view?usp=sharing
 
-## Cashier's App  
+## Power Up Coffee Shop 
 
 1. Login 
 
